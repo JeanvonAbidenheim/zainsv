@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="eng">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin Panel | Portfolio</title>
-
+  <title>Admin | Zainal Abidin</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -12,10 +11,9 @@
 </head>
 <body>
 
-  <!-- ============ LOGIN PAGE ============ -->
   <div class="login-page" id="loginPage">
     <div class="login-card">
-      <div class="login-logo">&lt;Admin/&gt;</div>
+      <div class="login-logo">&lt;Zain/&gt;</div>
       <p class="login-subtitle">Portfolio Dashboard</p>
       <h2>Masuk ke Panel Admin</h2>
       <p style="font-size:.85rem;color:var(--text-muted);margin-bottom:28px">Login hanya untuk pemilik website.</p>
@@ -32,18 +30,14 @@
         <span id="loginBtnText">Masuk</span>
       </button>
       <p style="margin-top:20px;font-size:.8rem;color:var(--text-dim)">
-        <a href="index.html" style="color:var(--accent)">← Kembali ke portfolio</a>
+        <a href="index.html" style="color:var(--accent)">Kembali ke portfolio</a>
       </p>
     </div>
   </div>
 
-  <!-- ============ ADMIN LAYOUT ============ -->
   <div class="admin-layout" id="adminLayout" style="display:none">
-
-    <!-- Sidebar Backdrop (mobile) -->
     <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
-    <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-header">
         <div class="sidebar-logo">&lt;Admin/&gt;</div>
@@ -83,7 +77,6 @@
       </div>
     </aside>
 
-    <!-- Main -->
     <main class="admin-main">
       <header class="admin-topbar">
         <div style="display:flex;align-items:center;gap:12px">
@@ -98,8 +91,6 @@
       </header>
 
       <div class="admin-content">
-
-        <!-- DASHBOARD TAB -->
         <div class="tab-content active" id="tab-dashboard">
           <div class="stats-grid" id="statsGrid">
             <div class="stat-card"><div class="stat-icon blue"><i class="fa-solid fa-briefcase"></i></div><div><div class="stat-value" id="statProjects">—</div><div class="stat-label">Proyek</div></div></div>
@@ -114,7 +105,6 @@
           </div>
         </div>
 
-        <!-- PROJECTS TAB -->
         <div class="tab-content" id="tab-projects">
           <div class="data-section">
             <div class="data-header">
@@ -125,7 +115,6 @@
           </div>
         </div>
 
-        <!-- SKILLS TAB -->
         <div class="tab-content" id="tab-skills">
           <div class="data-section">
             <div class="data-header">
@@ -136,7 +125,6 @@
           </div>
         </div>
 
-        <!-- CERTIFICATES TAB -->
         <div class="tab-content" id="tab-certificates">
           <div class="data-section">
             <div class="data-header">
@@ -147,7 +135,6 @@
           </div>
         </div>
 
-        <!-- EXPERIENCES TAB -->
         <div class="tab-content" id="tab-experiences">
           <div class="data-section">
             <div class="data-header">
@@ -158,7 +145,6 @@
           </div>
         </div>
 
-        <!-- PROFILE TAB -->
         <div class="tab-content" id="tab-profile">
           <div class="data-section">
             <div class="data-header"><div class="data-title">Edit Profil</div></div>
@@ -187,7 +173,6 @@
           </div>
         </div>
 
-        <!-- CONTACTS TAB -->
         <div class="tab-content" id="tab-contacts">
           <div class="data-section">
             <div class="data-header"><div class="data-title">Edit Kontak</div></div>
@@ -212,9 +197,6 @@
     </main>
   </div><!-- /admin-layout -->
 
-  <!-- ============ MODALS ============ -->
-
-  <!-- Project Modal -->
   <div class="modal-overlay" id="projectModal">
     <div class="modal-box">
       <div class="modal-header">
@@ -240,7 +222,6 @@
     </div>
   </div>
 
-  <!-- Skill Modal -->
   <div class="modal-overlay" id="skillModal">
     <div class="modal-box">
       <div class="modal-header">
@@ -266,7 +247,6 @@
     </div>
   </div>
 
-  <!-- Certificate Modal -->
   <div class="modal-overlay" id="certModal">
     <div class="modal-box">
       <div class="modal-header">
@@ -290,7 +270,6 @@
     </div>
   </div>
 
-  <!-- Experience Modal -->
   <div class="modal-overlay" id="expModal">
     <div class="modal-box">
       <div class="modal-header">
@@ -325,7 +304,6 @@
     </div>
   </div>
 
-  <!-- Confirm Delete Dialog -->
   <div class="confirm-overlay" id="confirmOverlay">
     <div class="confirm-box">
       <div class="confirm-icon">🗑️</div>
@@ -338,10 +316,7 @@
     </div>
   </div>
 
-  <!-- Toast Container -->
   <div class="toast-container" id="toastContainer"></div>
-
-  <!-- Firebase + Admin JS -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
     import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
