@@ -65,6 +65,9 @@
         <a href="#" class="sidebar-link" data-tab="experiences">
           <i class="fa-solid fa-timeline"></i> Pengalaman
         </a>
+        <a href="#" class="sidebar-link" data-tab="work">
+          <i class="fa-solid fa-briefcase"></i> Pengalaman Kerja
+        </a>
         <div class="nav-section-label" style="margin-top:12px">Pengaturan</div>
         <a href="#" class="sidebar-link" data-tab="profile">
           <i class="fa-solid fa-user"></i> Profil
@@ -101,6 +104,7 @@
             <div class="stat-card"><div class="stat-icon cyan"><i class="fa-solid fa-code"></i></div><div><div class="stat-value" id="statSkills">—</div><div class="stat-label">Skill</div></div></div>
             <div class="stat-card"><div class="stat-icon green"><i class="fa-solid fa-certificate"></i></div><div><div class="stat-value" id="statCerts">—</div><div class="stat-label">Sertifikat</div></div></div>
             <div class="stat-card"><div class="stat-icon orange"><i class="fa-solid fa-timeline"></i></div><div><div class="stat-value" id="statExp">—</div><div class="stat-label">Pengalaman</div></div></div>
+            <div class="stat-card"><div class="stat-icon blue"><i class="fa-solid fa-building"></i></div><div><div class="stat-value" id="statWork">—</div><div class="stat-label">Pengalaman Kerja</div></div></div>
           </div>
           <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px;text-align:center;">
             <i class="fa-solid fa-rocket" style="font-size:2rem;color:var(--accent);margin-bottom:12px;display:block"></i>
@@ -146,6 +150,17 @@
               <button class="btn btn-primary btn-sm" id="addExpBtn"><i class="fa-solid fa-plus"></i> Tambah</button>
             </div>
             <ul class="data-list" id="expList"><li class="empty-list"><i class="fa-solid fa-spinner fa-spin"></i><p>Memuat...</p></li></ul>
+          </div>
+        </div>
+
+        <!-- WORK TAB -->
+        <div class="tab-content" id="tab-work">
+          <div class="data-section">
+            <div class="data-header">
+              <div class="data-title">Pengalaman Kerja</div>
+              <button class="btn btn-primary btn-sm" id="addWorkBtn"><i class="fa-solid fa-plus"></i> Tambah</button>
+            </div>
+            <ul class="data-list" id="workAdminList"><li class="empty-list"><i class="fa-solid fa-spinner fa-spin"></i><p>Memuat...</p></li></ul>
           </div>
         </div>
 
@@ -304,6 +319,69 @@
       <div class="modal-footer">
         <button class="btn btn-outline" data-close="expModal">Batal</button>
         <button class="btn btn-primary" id="saveExpBtn"><i class="fa-solid fa-floppy-disk"></i> Simpan</button>
+      </div>
+    </div>
+  </div>
+
+    <!-- Work Modal -->
+  <div class="modal-overlay" id="workModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 id="workModalTitle">Tambah Pengalaman Kerja</h3>
+        <button class="modal-close" data-close="workModal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="workId" />
+        <div class="form-row">
+          <div class="form-group"><label>Posisi / Jabatan *</label><input type="text" id="workJobTitle" placeholder="Web Developer" /></div>
+          <div class="form-group">
+            <label>Tipe Pekerjaan</label>
+            <select id="workType">
+              <option value="fulltime">Full-time</option>
+              <option value="parttime">Part-time</option>
+              <option value="intern">Magang / Internship</option>
+              <option value="freelance">Freelance</option>
+              <option value="contract">Kontrak</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Nama Perusahaan *</label><input type="text" id="workCompany" placeholder="PT. Contoh Indonesia" /></div>
+          <div class="form-group"><label>Website Perusahaan</label><input type="url" id="workCompanyUrl" placeholder="https://perusahaan.com" /></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Logo Perusahaan (URL)</label><input type="url" id="workLogo" placeholder="https://..." /></div>
+          <div class="form-group">
+            <label>Tipe Lokasi</label>
+            <select id="workLocationType">
+              <option value="onsite">On-site</option>
+              <option value="remote">Remote</option>
+              <option value="hybrid">Hybrid</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group"><label>Lokasi (Kota, Negara)</label><input type="text" id="workLocation" placeholder="Malang, Indonesia" /></div>
+        <div class="form-row">
+          <div class="form-group"><label>Tanggal Mulai *</label><input type="date" id="workStart" /></div>
+          <div class="form-group"><label>Tanggal Selesai</label><input type="date" id="workEnd" /></div>
+        </div>
+        <div class="form-group">
+          <label style="display:flex;align-items:center;gap:8px;cursor:pointer">
+            <input type="checkbox" id="workCurrent" style="width:auto" />
+            <span>Masih bekerja di sini (posisi saat ini)</span>
+          </label>
+        </div>
+        <div class="form-group"><label>Deskripsi Pekerjaan</label><textarea id="workDesc" rows="3" placeholder="Jelaskan tanggung jawab dan kontribusi kamu..."></textarea></div>
+        <div class="form-group">
+          <label>Pencapaian / Highlight (satu per baris)</label>
+          <textarea id="workAchievements" rows="4" placeholder="Meningkatkan performa aplikasi sebesar 30%&#10;Memimpin tim 3 developer&#10;Membangun sistem X dari nol"></textarea>
+          <small style="color:var(--text-dim);font-size:.75rem">Tulis setiap pencapaian di baris baru (Enter)</small>
+        </div>
+        <div class="form-group"><label>Teknologi (pisahkan koma)</label><input type="text" id="workTech" placeholder="JavaScript, Firebase, React" /></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" data-close="workModal">Batal</button>
+        <button class="btn btn-primary" id="saveWorkBtn"><i class="fa-solid fa-floppy-disk"></i> Simpan</button>
       </div>
     </div>
   </div>
