@@ -63,6 +63,7 @@ function initTabs() {
       if (tab === "skills") loadSkills();
       if (tab === "certificates") loadCertificates();
       if (tab === "experiences") loadExperiences();
+      if (tab === "work") loadWorkAdmin();
       if (tab === "profile") loadProfile();
       if (tab === "contacts") loadContacts();
       if (tab === "dashboard") loadStats();
@@ -88,16 +89,18 @@ function initMobileSidebar() {
 // ---- Stats ----
 async function loadStats() {
   try {
-    const [p, s, c, e] = await Promise.all([
+    const [p, s, c, e, w] = await Promise.all([
       getDocs(collection(window.db, "projects")),
       getDocs(collection(window.db, "skills")),
       getDocs(collection(window.db, "certificates")),
       getDocs(collection(window.db, "experiences")),
+      getDocs(collection(window.db, "work")),
     ]);
     document.getElementById("statProjects").textContent = p.size;
-    document.getElementById("statSkills").textContent = s.size;
-    document.getElementById("statCerts").textContent = c.size;
-    document.getElementById("statExp").textContent = e.size;
+    document.getElementById("statSkills").textContent   = s.size;
+    document.getElementById("statCerts").textContent    = c.size;
+    document.getElementById("statExp").textContent      = e.size;
+    document.getElementById("statWork").textContent     = w.size;
   } catch(e) { console.warn("Stats failed:", e); }
 }
 
@@ -414,6 +417,113 @@ document.getElementById("saveExpBtn")?.addEventListener("click", async () => {
     else     await addDoc(collection(window.db, "experiences"), { ...data, createdAt: new Date() });
     toast(id ? "Pengalaman diperbarui" : "Pengalaman ditambahkan", "success");
     closeModal("expModal"); loadExperiences();
+  } catch(e) { toast("Gagal: " + e.message, "error"); }
+});
+
+// ============================================
+//  WORK EXPERIENCE CRUD
+// ============================================
+async function loadWorkAdmin() {
+  const list = document.getElementById("workAdminList");
+  list.innerHTML = `<li class="empty-list"><i class="fa-solid fa-spinner fa-spin"></i><p>Memuat...</p></li>`;
+  try {
+    const snap = await getDocs(query(collection(window.db, "work"), orderBy("startDate", "desc")));
+    if (snap.empty) { list.innerHTML = `<li class="empty-list"><i class="fa-solid fa-box-open"></i><p>Belum ada pengalaman kerja.</p></li>`; return; }
+    list.innerHTML = "";
+    const typeLabel = { fulltime:"Full-time", parttime:"Part-time", intern:"Magang", freelance:"Freelance", contract:"Kontrak" };
+    snap.forEach(d => {
+      const w = { id: d.id, ...d.data() };
+      const fmtDate = iso => { try { return new Date(iso).toLocaleDateString("id-ID",{month:"short",year:"numeric"}); } catch(_){ return iso||""; } };
+      const li = document.createElement("li"); li.className = "data-item";
+      li.innerHTML = `
+        <div class="data-item-thumb" style="background:var(--surface-2);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:800;color:var(--primary);font-size:1.2rem">
+          ${w.logoUrl ? `<img src="${w.logoUrl}" style="width:100%;height:100%;object-fit:contain;padding:6px" alt="${w.company}" onerror="this.parentElement.textContent='${(w.company||'?')[0].toUpperCase()}'" />` : (w.company||"?")[0].toUpperCase()}
+        </div>
+        <div class="data-item-info">
+          <div class="data-item-title">${w.jobTitle} ${w.current ? '<span style="color:var(--success);font-size:.75rem">● Aktif</span>' : ""}</div>
+          <div class="data-item-sub">${w.company} · ${typeLabel[w.type]||w.type||""} · ${fmtDate(w.startDate)}${w.current?" – Sekarang":w.endDate?" – "+fmtDate(w.endDate):""}</div>
+        </div>
+        <div class="data-item-actions">
+          <button class="btn btn-outline btn-sm edit-work" data-id="${w.id}"><i class="fa-solid fa-pen"></i> <span>Edit</span></button>
+          <button class="btn btn-danger btn-sm del-work" data-id="${w.id}" data-title="${w.jobTitle} di ${w.company}"><i class="fa-solid fa-trash"></i> <span>Hapus</span></button>
+        </div>`;
+      list.appendChild(li);
+    });
+    list.querySelectorAll(".edit-work").forEach(btn => btn.addEventListener("click", () => editWork(btn.dataset.id)));
+    list.querySelectorAll(".del-work").forEach(btn => btn.addEventListener("click", async () => {
+      if (await confirm(`Hapus "${btn.dataset.title}"?`)) {
+        await deleteDoc(doc(window.db, "work", btn.dataset.id));
+        toast("Pengalaman kerja dihapus", "success"); loadWorkAdmin();
+      }
+    }));
+  } catch(e) { list.innerHTML = `<li class="empty-list"><p>Gagal memuat.</p></li>`; }
+}
+
+async function editWork(id) {
+  const snap = await getDoc(doc(window.db, "work", id));
+  const w = snap.data();
+  document.getElementById("workId").value           = id;
+  document.getElementById("workModalTitle").textContent = "Edit Pengalaman Kerja";
+  document.getElementById("workJobTitle").value     = w.jobTitle || "";
+  document.getElementById("workCompany").value      = w.company || "";
+  document.getElementById("workCompanyUrl").value   = w.companyUrl || "";
+  document.getElementById("workLogo").value         = w.logoUrl || "";
+  document.getElementById("workType").value         = w.type || "fulltime";
+  document.getElementById("workLocationType").value = w.locationType || "onsite";
+  document.getElementById("workLocation").value     = w.location || "";
+  document.getElementById("workStart").value        = w.startDate ? w.startDate.slice(0,10) : "";
+  document.getElementById("workEnd").value          = w.endDate ? w.endDate.slice(0,10) : "";
+  document.getElementById("workCurrent").checked    = w.current || false;
+  document.getElementById("workDesc").value         = w.description || "";
+  document.getElementById("workAchievements").value = (w.achievements || []).join("\n");
+  document.getElementById("workTech").value         = (w.tech || []).join(", ");
+  document.getElementById("workEnd").disabled       = w.current || false;
+  openModal("workModal");
+}
+
+document.getElementById("workCurrent")?.addEventListener("change", (e) => {
+  document.getElementById("workEnd").disabled = e.target.checked;
+  if (e.target.checked) document.getElementById("workEnd").value = "";
+});
+
+document.getElementById("addWorkBtn")?.addEventListener("click", () => {
+  document.getElementById("workId").value = "";
+  document.getElementById("workModalTitle").textContent = "Tambah Pengalaman Kerja";
+  ["workJobTitle","workCompany","workCompanyUrl","workLogo","workLocation","workStart","workEnd","workDesc","workAchievements","workTech"].forEach(id => document.getElementById(id).value = "");
+  document.getElementById("workType").value = "fulltime";
+  document.getElementById("workLocationType").value = "onsite";
+  document.getElementById("workCurrent").checked = false;
+  document.getElementById("workEnd").disabled = false;
+  openModal("workModal");
+});
+
+document.getElementById("saveWorkBtn")?.addEventListener("click", async () => {
+  const jobTitle = document.getElementById("workJobTitle").value.trim();
+  const company  = document.getElementById("workCompany").value.trim();
+  if (!jobTitle || !company) { toast("Posisi dan perusahaan wajib diisi", "error"); return; }
+  const isCurrent = document.getElementById("workCurrent").checked;
+  const data = {
+    jobTitle,
+    company,
+    companyUrl:   document.getElementById("workCompanyUrl").value.trim(),
+    logoUrl:      document.getElementById("workLogo").value.trim(),
+    type:         document.getElementById("workType").value,
+    locationType: document.getElementById("workLocationType").value,
+    location:     document.getElementById("workLocation").value.trim(),
+    startDate:    document.getElementById("workStart").value,
+    endDate:      isCurrent ? "" : document.getElementById("workEnd").value,
+    current:      isCurrent,
+    description:  document.getElementById("workDesc").value.trim(),
+    achievements: document.getElementById("workAchievements").value.split("\n").map(a=>a.trim()).filter(Boolean),
+    tech:         document.getElementById("workTech").value.split(",").map(t=>t.trim()).filter(Boolean),
+    updatedAt:    new Date()
+  };
+  const id = document.getElementById("workId").value;
+  try {
+    if (id) await updateDoc(doc(window.db, "work", id), data);
+    else     await addDoc(collection(window.db, "work"), { ...data, createdAt: new Date() });
+    toast(id ? "Pengalaman kerja diperbarui" : "Pengalaman kerja ditambahkan", "success");
+    closeModal("workModal"); loadWorkAdmin();
   } catch(e) { toast("Gagal: " + e.message, "error"); }
 });
 

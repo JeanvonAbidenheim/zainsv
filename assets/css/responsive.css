@@ -89,6 +89,15 @@
   .contact-cards {
     grid-template-columns: 1fr 1fr;
   }
+  .work-card {
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+  }
+  .work-duration {
+    grid-column: 2;
+    grid-row: 1;
+    text-align: left;
+  }
 }
 
 /* ---- Mobile (max 480px) ---- */
@@ -113,6 +122,13 @@
   .certs-grid { grid-template-columns: 1fr; }
 
   .contact-cards { grid-template-columns: 1fr; }
+
+  .work-card {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .work-logo-wrap { width: 44px; height: 44px; }
+  .work-duration { text-align: left; }
 
   .cta-box { padding: 24px 20px; }
 

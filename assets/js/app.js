@@ -399,6 +399,107 @@ function renderEmpty(msg) {
   return `<div class="empty-state"><i class="fa-solid fa-box-open"></i><p>${msg}</p></div>`;
 }
 
+// ---- Load Work Experience ----
+async function loadWork() {
+  const list = document.getElementById("workList");
+  if (!list) return;
+  try {
+    const snap = await getDocs(query(collection(window.db, "work"), orderBy("startDate", "desc")));
+    if (snap.empty) { list.innerHTML = renderEmpty("Belum ada pengalaman kerja."); return; }
+    list.innerHTML = "";
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+
+    snap.forEach(d => {
+      const w = { id: d.id, ...d.data() };
+      const card = buildWorkCard(w);
+      list.appendChild(card);
+      io.observe(card);
+    });
+  } catch (e) {
+    list.innerHTML = renderEmpty("Gagal memuat pengalaman kerja.");
+    console.warn("Work load failed:", e.message);
+  }
+}
+
+function buildWorkCard(w) {
+  const typeLabel  = { fulltime: "Full-time", parttime: "Part-time", intern: "Magang", freelance: "Freelance", contract: "Kontrak" };
+  const typeClass  = { fulltime: "work-type-fulltime", parttime: "work-type-parttime", intern: "work-type-intern", freelance: "work-type-freelance", contract: "work-type-contract" };
+
+  // Duration in months
+  let durationStr = "";
+  try {
+    if (w.startDate) {
+      const start = new Date(w.startDate);
+      const end   = w.current ? new Date() : (w.endDate ? new Date(w.endDate) : new Date());
+      const months = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
+      if (months >= 12) {
+        const y = Math.floor(months / 12), m = months % 12;
+        durationStr = y + " thn" + (m ? " " + m + " bln" : "");
+      } else {
+        durationStr = months + " bulan";
+      }
+    }
+  } catch(_) {}
+
+  // Format display dates
+  const fmtDate = (iso) => {
+    if (!iso) return "";
+    try {
+      return new Date(iso).toLocaleDateString("id-ID", { month: "short", year: "numeric" });
+    } catch(_) { return iso; }
+  };
+  const startDisp = fmtDate(w.startDate);
+  const endDisp   = w.current ? "" : fmtDate(w.endDate);
+
+  const card = document.createElement("div");
+  card.className = "work-card";
+  card.innerHTML = `
+    <div class="work-logo-wrap">
+      ${w.logoUrl
+        ? `<img class="work-logo" src="${w.logoUrl}" alt="${w.company}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" /><span class="work-logo-placeholder" style="display:none">${(w.company||"?")[0]}</span>`
+        : `<span class="work-logo-placeholder">${(w.company||"?")[0].toUpperCase()}</span>`}
+    </div>
+
+    <div class="work-content">
+      <div class="work-header">
+        <span class="work-title">${w.jobTitle}</span>
+        ${w.type ? `<span class="work-type-badge ${typeClass[w.type]||"work-type-intern"}">${typeLabel[w.type]||w.type}</span>` : ""}
+        ${w.current ? `<span class="work-current-dot">Sekarang</span>` : ""}
+      </div>
+
+      <div class="work-company">
+        ${w.companyUrl
+          ? `<a href="${w.companyUrl}" target="_blank" rel="noopener">${w.company}</a><i class="fa-solid fa-arrow-up-right-from-square"></i>`
+          : w.company || ""}
+      </div>
+
+      <div class="work-meta">
+        <span class="work-meta-item"><i class="fa-regular fa-calendar"></i> ${startDisp}${endDisp ? " – " + endDisp : ""}${w.current ? " – Sekarang" : ""}</span>
+        ${w.location ? `<span class="work-meta-item"><i class="fa-solid fa-location-dot"></i> ${w.location}</span>` : ""}
+        ${w.locationType ? `<span class="work-meta-item"><i class="fa-solid fa-${w.locationType==="remote"?"wifi":w.locationType==="hybrid"?"arrows-split-up-and-left":"building"}"></i> ${w.locationType==="remote"?"Remote":w.locationType==="hybrid"?"Hybrid":"On-site"}</span>` : ""}
+      </div>
+
+      ${w.description ? `<p class="work-desc">${w.description}</p>` : ""}
+
+      ${w.achievements?.length
+        ? `<ul class="work-achievements">${w.achievements.map(a=>`<li>${a}</li>`).join("")}</ul>`
+        : ""}
+
+      ${(w.tech||[]).length
+        ? `<div class="work-tech">${w.tech.map(t=>`<span class="tech-badge">${t}</span>`).join("")}</div>`
+        : ""}
+    </div>
+
+    <div class="work-duration">
+      <div class="work-duration-label">${startDisp.split(" ")[1] || ""}</div>
+      ${durationStr ? `<div class="work-duration-months">${durationStr}</div>` : ""}
+    </div>
+  `;
+  return card;
+}
+
 // ---- Demo / Fallback Data (jika Firebase belum dikonfigurasi) ----
 async function loadDemoData() {
   // Profile
@@ -464,6 +565,54 @@ async function loadDemoData() {
     cgrid.appendChild(card); cio.observe(card);
   });
 
+  // Work Experience (demo)
+  const wlist = document.getElementById("workList");
+  const demoWork = [
+    {
+      jobTitle: "Web Developer Intern",
+      company: "PT. Teknologi Maju Indonesia",
+      companyUrl: "",
+      type: "intern",
+      startDate: "2023-06-01",
+      endDate: "2023-08-31",
+      current: false,
+      location: "Malang, Indonesia",
+      locationType: "hybrid",
+      description: "Mengembangkan dan memelihara fitur dashboard admin sistem manajemen konten perusahaan menggunakan JavaScript dan Firebase.",
+      achievements: [
+        "Membangun modul pelaporan otomatis yang mengurangi waktu rekap data 40%",
+        "Mengintegrasikan Firebase Realtime Database untuk fitur notifikasi live",
+        "Berkolaborasi dengan tim desainer untuk implementasi redesign UI dashboard"
+      ],
+      tech: ["JavaScript", "Firebase", "HTML", "CSS", "Git"],
+      logoUrl: ""
+    },
+    {
+      jobTitle: "Freelance Web Developer",
+      company: "Klien Mandiri",
+      companyUrl: "",
+      type: "freelance",
+      startDate: "2023-01-01",
+      endDate: "",
+      current: true,
+      location: "Remote",
+      locationType: "remote",
+      description: "Menerima dan mengerjakan proyek web development untuk UMKM dan individu, mulai dari landing page hingga sistem informasi sederhana.",
+      achievements: [
+        "Menyelesaikan 5+ proyek website untuk klien UMKM lokal",
+        "Rata-rata rating kepuasan klien 4.8/5",
+        "Spesialisasi pada website bisnis dengan integrasi Firebase"
+      ],
+      tech: ["HTML", "CSS", "JavaScript", "Firebase", "Figma"],
+      logoUrl: ""
+    }
+  ];
+  if (wlist) {
+    wlist.innerHTML = "";
+    const wio = new IntersectionObserver((e) => { e.forEach(x => { if (x.isIntersecting) { x.target.classList.add("visible"); wio.unobserve(x.target); }}); }, { threshold: 0.08 });
+    demoWork.forEach(w => { const card = buildWorkCard(w); wlist.appendChild(card); wio.observe(card); });
+  }
+
   // Experience (demo)
   const timeline = document.getElementById("experienceTimeline");
   const demoExp = [
@@ -500,6 +649,7 @@ export async function initApp() {
       loadProjects(),
       loadCertificates(),
       loadExperience(),
+      loadWork(),
     ]);
   } else {
     console.info("🔧 Firebase belum dikonfigurasi, menampilkan demo data.");
