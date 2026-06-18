@@ -3,7 +3,7 @@
 Website portofolio profesional dengan Firebase Firestore + Admin Panel.
 Dibangun dengan HTML, CSS, JavaScript murni (Vanilla JS) — tanpa framework.
 
-**Live Demo:** https://zainsv.vercel.app
+**Live Demo:** Setelah deploy ke Vercel, link akan tersedia di sini.
 
 ---
 
