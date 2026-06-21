@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portofolio | Nama Kamu</title>
+  <meta name="description" content="Portofolio profesional mahasiswa Informatika" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/wayang-theme.css" />
+  <link rel="stylesheet" href="assets/css/responsive.css" />
+</head>
+<body>
+
+  <!-- ========== NAVBAR (Mega Menu) ========== -->
+  <nav id="navbar" class="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo">
+        <span class="logo-mark">
+          <svg viewBox="0 0 40 40" width="34" height="34" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="36" height="36" rx="8" fill="#7A0C1E"/>
+            <path d="M20 8 C25 14, 31 20, 29 28 C27 33, 23 35, 20 35 C17 35, 13 33, 11 28 C9 20, 15 14, 20 8 Z" fill="#D4AF37"/>
+            <circle cx="20" cy="17" r="2.4" fill="#7A0C1E"/>
+          </svg>
+        </span>
+        <span class="logo-text">Nama<span class="logo-accent">Kamu</span></span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+
+        <li class="nav-item has-mega">
+          <a href="#about" class="nav-link">Tentang <i class="fa-solid fa-chevron-down nav-caret"></i></a>
+          <div class="mega-menu">
+            <div class="mega-col">
+              <span class="mega-col-title">Profil</span>
+              <a href="#about" class="mega-link"><i class="fa-solid fa-user"></i> Tentang Saya</a>
+              <a href="#about" class="mega-link"><i class="fa-solid fa-graduation-cap"></i> Pendidikan</a>
+              <a href="#skills" class="mega-link"><i class="fa-solid fa-bullseye"></i> Minat & Tujuan</a>
+            </div>
+            <div class="mega-col">
+              <span class="mega-col-title">Kemampuan</span>
+              <a href="#skills" class="mega-link"><i class="fa-solid fa-code"></i> Skill & Teknologi</a>
+              <a href="#certificates" class="mega-link"><i class="fa-solid fa-certificate"></i> Sertifikat</a>
+            </div>
+            <div class="mega-col mega-col-feature">
+              <span class="mega-col-title">Sorotan</span>
+              <p class="mega-feature-text">Mahasiswa Informatika yang aktif membangun proyek nyata dan terus mengasah kemampuan.</p>
+              <a href="#about" class="mega-feature-link">Kenali saya lebih dekat <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </li>
+
+        <li class="nav-item has-mega">
+          <a href="#projects" class="nav-link">Karya <i class="fa-solid fa-chevron-down nav-caret"></i></a>
+          <div class="mega-menu">
+            <div class="mega-col">
+              <span class="mega-col-title">Portfolio</span>
+              <a href="#projects" class="mega-link"><i class="fa-solid fa-briefcase"></i> Semua Proyek</a>
+              <a href="#projects" class="mega-link"><i class="fa-brands fa-github"></i> Repository GitHub</a>
+            </div>
+            <div class="mega-col">
+              <span class="mega-col-title">Riwayat</span>
+              <a href="#experience" class="mega-link"><i class="fa-solid fa-timeline"></i> Pengalaman Organisasi</a>
+              <a href="#work" class="mega-link"><i class="fa-solid fa-building"></i> Pengalaman Kerja</a>
+            </div>
+            <div class="mega-col mega-col-feature">
+              <span class="mega-col-title">Sorotan</span>
+              <p class="mega-feature-text">Kumpulan proyek web dan sistem yang sudah dibangun dari kebutuhan nyata.</p>
+              <a href="#projects" class="mega-feature-link">Lihat semua karya <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <a href="#contact" class="nav-link">Kontak</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="#" class="nav-link nav-link-cta" id="navCvBtn">
+            <i class="fa-solid fa-download"></i> CV
+          </a>
+        </li>
+      </ul>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-backdrop" id="navBackdrop"></div>
+
+  <!-- ========== HERO SECTION (Clean/Formal) ========== -->
+  <section id="home" class="hero">
+    <div class="hero-pattern-edge"></div>
+    <div class="container hero-container">
+      <div class="hero-text reveal">
+        <p class="hero-eyebrow"><span class="eyebrow-dot"></span> Mahasiswa Informatika</p>
+        <h1 class="hero-name" id="heroName">Nama Kamu</h1>
+        <div class="hero-roles">
+          <span class="roles-prefix">Seorang&nbsp;</span>
+          <span class="roles-typed" id="typedText"></span><span class="cursor">|</span>
+        </div>
+        <p class="hero-desc" id="heroDesc">Mahasiswa Informatika yang passionate di bidang web development, selalu belajar teknologi baru dan bersemangat membangun solusi digital.</p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary"><i class="fa-solid fa-briefcase"></i> Lihat Proyek</a>
+          <a href="#contact" class="btn btn-outline"><i class="fa-solid fa-envelope"></i> Hubungi Saya</a>
+          <a href="#" class="btn btn-ghost" id="cvDownload"><i class="fa-solid fa-download"></i> Download CV</a>
+        </div>
+        <div class="hero-social">
+          <a href="#" class="social-icon" id="socialGithub" aria-label="GitHub" target="_blank"><i class="fa-brands fa-github"></i></a>
+          <a href="#" class="social-icon" id="socialLinkedin" aria-label="LinkedIn" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="#" class="social-icon" id="socialInstagram" aria-label="Instagram" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal">
+        <div class="hero-avatar-wrap">
+          <span class="avatar-ring"></span>
+          <img src="assets/images/profile.jpg" alt="Foto Profil" class="hero-avatar" id="heroAvatar" onerror="this.src='https://ui-avatars.com/api/?name=Dev+Portfolio&background=7A0C1E&color=F7F1E6&size=400'" />
+          <span class="avatar-badge"><i class="fa-solid fa-code"></i></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== STAT STRIP ========== -->
+  <section class="stat-strip">
+    <div class="container stat-strip-grid" id="statStripGrid">
+      <div class="stat-strip-item reveal">
+        <span class="stat-strip-num" id="statNumProjects">0</span>
+        <span class="stat-strip-label">Proyek Dibangun</span>
+      </div>
+      <div class="stat-strip-item reveal">
+        <span class="stat-strip-num" id="statNumCerts">0</span>
+        <span class="stat-strip-label">Sertifikat</span>
+      </div>
+      <div class="stat-strip-item reveal">
+        <span class="stat-strip-num" id="statNumSkills">0</span>
+        <span class="stat-strip-label">Teknologi Dikuasai</span>
+      </div>
+      <div class="stat-strip-item reveal">
+        <span class="stat-strip-num" id="statNumExp">0</span>
+        <span class="stat-strip-label">Pengalaman</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT SECTION ========== -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Kenalan Yuk</span>
+        <h2 class="section-title">Tentang Saya</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-image reveal">
+          <div class="about-img-wrap">
+            <img src="assets/images/about.jpg" alt="About" id="aboutAvatar" onerror="this.src='https://ui-avatars.com/api/?name=About+Me&background=1E293B&color=06B6D4&size=400'" />
+            <div class="about-img-decoration"></div>
+          </div>
+        </div>
+        <div class="about-content reveal">
+          <p class="about-text" id="aboutText">Saya adalah mahasiswa Informatika semester 6 yang memiliki passion di bidang web development dan UI/UX design. Saya senang membangun aplikasi yang tidak hanya fungsional tetapi juga memiliki tampilan yang menarik dan mudah digunakan.</p>
+          <div class="about-info-grid" id="aboutInfoGrid">
+            <div class="info-item">
+              <span class="info-label">Universitas</span>
+              <span class="info-value" id="infoUniversity">Universitas Kamu</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Jurusan</span>
+              <span class="info-value" id="infoMajor">Teknik Informatika</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Angkatan</span>
+              <span class="info-value" id="infoYear">2022</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Lokasi</span>
+              <span class="info-value" id="infoLocation">Indonesia</span>
+            </div>
+          </div>
+          <div class="about-interests">
+            <span class="interests-label">Minat:</span>
+            <div class="interests-tags" id="interestsTags">
+              <span class="tag">Web Development</span>
+              <span class="tag">UI/UX Design</span>
+              <span class="tag">Open Source</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SKILLS SECTION ========== -->
+  <section id="skills" class="section section-alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Kemampuan</span>
+        <h2 class="section-title">Skill & Teknologi</h2>
+      </div>
+      <div class="skills-grid" id="skillsGrid">
+        <!-- Skeleton loaders -->
+        <div class="skill-skeleton"></div>
+        <div class="skill-skeleton"></div>
+        <div class="skill-skeleton"></div>
+        <div class="skill-skeleton"></div>
+        <div class="skill-skeleton"></div>
+        <div class="skill-skeleton"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PROJECTS SECTION ========== -->
+  <section id="projects" class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Karya</span>
+        <h2 class="section-title">Portfolio Proyek</h2>
+      </div>
+      <div class="projects-filter reveal" id="projectsFilter">
+        <button class="filter-btn active" data-filter="all">Semua</button>
+      </div>
+      <div class="projects-grid" id="projectsGrid">
+        <div class="project-skeleton"></div>
+        <div class="project-skeleton"></div>
+        <div class="project-skeleton"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CERTIFICATES SECTION ========== -->
+  <section id="certificates" class="section section-alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Pencapaian</span>
+        <h2 class="section-title">Sertifikat</h2>
+      </div>
+      <div class="certs-grid" id="certsGrid">
+        <div class="cert-skeleton"></div>
+        <div class="cert-skeleton"></div>
+        <div class="cert-skeleton"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== EXPERIENCE SECTION ========== -->
+  <section id="experience" class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Perjalanan</span>
+        <h2 class="section-title">Pengalaman</h2>
+      </div>
+      <div class="timeline" id="experienceTimeline">
+        <div class="timeline-skeleton"></div>
+        <div class="timeline-skeleton"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PENGALAMAN KERJA SECTION ========== -->
+  <section id="work" class="section section-alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Karier</span>
+        <h2 class="section-title">Pengalaman Kerja</h2>
+        <p class="section-subtitle">Riwayat pekerjaan, magang, dan freelance profesional.</p>
+      </div>
+      <div class="work-list" id="workList">
+        <div class="work-skeleton"></div>
+        <div class="work-skeleton"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT SECTION ========== -->
+  <section id="contact" class="section section-alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Terhubung</span>
+        <h2 class="section-title">Kontak Saya</h2>
+        <p class="section-subtitle">Tertarik bekerja sama atau sekadar ngobrol? Jangan ragu untuk menghubungi saya!</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-cards" id="contactCards">
+          <div class="contact-card reveal">
+            <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+            <h3>Email</h3>
+            <a href="mailto:email@example.com" id="contactEmail">email@example.com</a>
+          </div>
+          <div class="contact-card reveal">
+            <div class="contact-icon"><i class="fa-brands fa-github"></i></div>
+            <h3>GitHub</h3>
+            <a href="#" id="contactGithub" target="_blank">github.com/username</a>
+          </div>
+          <div class="contact-card reveal">
+            <div class="contact-icon"><i class="fa-brands fa-linkedin"></i></div>
+            <h3>LinkedIn</h3>
+            <a href="#" id="contactLinkedin" target="_blank">linkedin.com/in/username</a>
+          </div>
+          <div class="contact-card reveal">
+            <div class="contact-icon"><i class="fa-brands fa-whatsapp"></i></div>
+            <h3>WhatsApp</h3>
+            <a href="#" id="contactWhatsapp" target="_blank">+62 xxx-xxxx-xxxx</a>
+          </div>
+        </div>
+        <div class="contact-cta reveal">
+          <div class="cta-box">
+            <h3>Siap Berkolaborasi?</h3>
+            <p>Saya terbuka untuk freelance, magang, atau proyek kolaborasi.</p>
+            <a href="mailto:email@example.com" class="btn btn-primary" id="ctaEmail">
+              <i class="fa-solid fa-paper-plane"></i> Kirim Email
+            </a>
+            <a href="#" class="btn btn-whatsapp" id="ctaWhatsapp">
+              <i class="fa-brands fa-whatsapp"></i> WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-text">Dibuat dengan <span class="heart">♥</span> oleh <span id="footerName">Nama Kamu</span></p>
+      <p class="footer-sub">© <span id="footerYear"></span> · Dibangun dengan HTML, CSS, JavaScript & Firebase</p>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- Firebase SDK -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+    import { getAuth } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+    import firebaseConfig from "./assets/js/firebase-config.js";
+
+    const app = initializeApp(firebaseConfig);
+    window.db = getFirestore(app);
+    window.auth = getAuth(app);
+
+    // Load app after Firebase ready
+    const { initApp } = await import("./assets/js/app.js");
+    initApp();
+  </script>
+
+</body>
+</html>
