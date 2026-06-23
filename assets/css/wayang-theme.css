@@ -4,19 +4,19 @@
    ============================================ */
 
 :root {
-  --bg:          #FAF6EE;
-  --bg-alt:      #F2EBDD;
-  --surface:     #FFFFFF;
-  --surface-2:   #F7F1E6;
-  --border:      #E6DCC8;
+  --bg:          #000000;
+  --bg-alt:      #000000;
+  --surface:     #000000;
+  --surface-2:   #000000;
+  --border:      #000000;
 
   --primary:     #7A0C1E;
   --primary-h:   #5C0916;
   --secondary:   #9E1B2E;
   --black:       #1A1210;
   --black-soft:  #2B201C;
-  --accent:      #B8902F;
-  --accent-h:    #9C7A26;
+  --accent:      #b82f2f;
+  --accent-h:    #9c2626;
 
   --text:        #211512;
   --text-muted:  #6B5D52;
@@ -24,7 +24,7 @@
   --text-onmaroon: #F7F1E6;
 
   --success:     #2E6B3E;
-  --warning:     #9C7A26;
+  --warning:     #f2ff00;
 
   --radius-sm:   6px;
   --radius-md:   12px;
