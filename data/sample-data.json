@@ -1,0 +1,161 @@
+{
+  "_readme": "File ini berisi contoh data untuk diisi ke Firebase Firestore. Gunakan Firebase Console atau script seed untuk mengisi data ini.",
+
+  "profile": {
+    "documentId": "main",
+    "name": "Zainal Abidin",
+    "university": "Universitas Narotama",
+    "major": "Teknik Informatika",
+    "year": "2025",
+    "location": "Surabaya, Indonesia",
+    "description": "Mahasiswa Informatika yang passionate di bidang web development, selalu belajar teknologi baru dan bersemangat membangun solusi digital.",
+    "aboutText": "Saya adalah mahasiswa Informatika semester 6 yang memiliki passion di bidang web development dan UI/UX design. Saya senang membangun aplikasi yang tidak hanya fungsional tetapi juga memiliki tampilan yang menarik dan mudah digunakan.",
+    "avatarUrl": "https://ui-avatars.com/api/?name=Zainal+Abidin&background=2563EB&color=fff&size=200",
+    "aboutAvatar": "https://ui-avatars.com/api/?name=Zainal+Abidin&background=1E293B&color=06B6D4&size=400",
+    "cvUrl": "https://drive.google.com/file/d/YOUR_CV_FILE_ID/view",
+    "interests": ["Web Development", "UI/UX Design", "Open Source", "Cloud Computing", "Cyber Security"]
+  },
+
+  "contacts": {
+    "documentId": "main",
+    "email": "zainalabidinworkingout@email.com",
+    "whatsapp": "+6285857498589",
+    "github": "github.com/JeanvonAbidenheim",
+    "linkedin": "linkedin.com/in/zainal-abidin",
+    "instagram": "@zainsv_"
+  },
+
+  "skills": [
+    { "name": "HTML", "logoUrl": "https://skillicons.dev/icons?i=html", "level": 90, "order": 1 },
+    { "name": "CSS", "logoUrl": "https://skillicons.dev/icons?i=css", "level": 85, "order": 2 },
+    { "name": "JavaScript", "logoUrl": "https://skillicons.dev/icons?i=js", "level": 80, "order": 3 },
+    { "name": "PHP", "logoUrl": "https://skillicons.dev/icons?i=php", "level": 70, "order": 4 },
+    { "name": "Python", "logoUrl": "https://skillicons.dev/icons?i=python", "level": 65, "order": 5 },
+    { "name": "Firebase", "logoUrl": "https://skillicons.dev/icons?i=firebase", "level": 75, "order": 6 },
+    { "name": "Git", "logoUrl": "https://skillicons.dev/icons?i=git", "level": 80, "order": 7 },
+    { "name": "MySQL", "logoUrl": "https://skillicons.dev/icons?i=mysql", "level": 72, "order": 8 }
+  ],
+
+  "projects": [
+    {
+      "title": "Website UMKM Penjahit",
+      "description": "Sistem pemesanan jasa jahit online berbasis web dengan fitur katalog produk, estimasi harga, dan booking slot pengerjaan secara real-time.",
+      "tech": ["HTML", "CSS", "JavaScript", "Firebase"],
+      "github": "https://github.com/ahmaddev/umkm-penjahit",
+      "demo": "https://umkm-penjahit.vercel.app",
+      "thumbnail": "",
+      "order": 1
+    },
+    {
+      "title": "Sistem Absensi Digital",
+      "description": "Aplikasi absensi berbasis QR Code untuk siswa sekolah dengan dashboard rekap kehadiran dan notifikasi otomatis ke orang tua.",
+      "tech": ["JavaScript", "Firebase", "HTML", "CSS"],
+      "github": "https://github.com/ahmaddev/absensi-digital",
+      "demo": "https://absensi-digital.vercel.app",
+      "thumbnail": "",
+      "order": 2
+    },
+    {
+      "title": "Blog Pribadi",
+      "description": "Blog personal yang dibangun dengan HTML/CSS murni, mendukung penulisan artikel dengan kategori, tag, dan fitur pencarian client-side.",
+      "tech": ["HTML", "CSS", "JavaScript"],
+      "github": "https://github.com/ahmaddev/personal-blog",
+      "demo": "https://blog-ahmad.vercel.app",
+      "thumbnail": "",
+      "order": 3
+    }
+  ],
+
+  "certificates": [
+    {
+      "title": "Belajar Membuat Aplikasi Web dengan React",
+      "issuer": "Dicoding Indonesia",
+      "year": "2024",
+      "imageUrl": "",
+      "credentialUrl": "https://www.dicoding.com/certificates/xxxx"
+    },
+    {
+      "title": "JavaScript Algorithms and Data Structures",
+      "issuer": "freeCodeCamp",
+      "year": "2024",
+      "imageUrl": "",
+      "credentialUrl": "https://freecodecamp.org/certification/xxxx"
+    },
+    {
+      "title": "Google UX Design Professional Certificate",
+      "issuer": "Coursera",
+      "year": "2023",
+      "imageUrl": "",
+      "credentialUrl": "https://coursera.org/verify/xxxx"
+    }
+  ],
+
+  "experiences": [
+    {
+      "role": "Ketua Divisi Web Development",
+      "organization": "Himpunan Mahasiswa Informatika UB",
+      "type": "org",
+      "startDate": "Jan 2023",
+      "endDate": "Des 2023",
+      "description": "Memimpin tim 5 orang dalam pembangunan dan pemeliharaan website resmi himpunan. Menerapkan sistem CMS sederhana dengan Firebase Firestore."
+    },
+    {
+      "role": "Peserta & Finalis",
+      "organization": "Hackathon Nasional GEMASTIK 2023",
+      "type": "competition",
+      "startDate": "Okt 2023",
+      "endDate": "",
+      "description": "Berhasil masuk 10 besar dari 200+ tim peserta. Membangun aplikasi smart farming berbasis IoT dan web dashboard dalam waktu 24 jam."
+    },
+    {
+      "role": "Koordinator Divisi IT",
+      "organization": "Panitia PKK Mahasiswa Baru Informatika",
+      "type": "event",
+      "startDate": "Jul 2023",
+      "endDate": "Agu 2023",
+      "description": "Mengelola sistem registrasi online, live streaming, dan dokumentasi digital untuk acara penerimaan mahasiswa baru sebanyak 300+ peserta."
+    }
+  ],
+
+  "work": [
+    {
+      "jobTitle": "Web Developer Intern",
+      "company": "PT. Teknologi Maju Indonesia",
+      "companyUrl": "https://teknologimaju.co.id",
+      "logoUrl": "",
+      "type": "intern",
+      "startDate": "2023-06-01",
+      "endDate": "2023-08-31",
+      "current": false,
+      "location": "Malang, Indonesia",
+      "locationType": "hybrid",
+      "description": "Mengembangkan dan memelihara fitur dashboard admin sistem manajemen konten perusahaan menggunakan JavaScript dan Firebase Firestore.",
+      "achievements": [
+        "Membangun modul pelaporan otomatis yang mengurangi waktu rekap data tim sebesar 40%",
+        "Mengintegrasikan Firebase Realtime Database untuk fitur notifikasi live antar pengguna",
+        "Berkolaborasi dengan tim desainer untuk implementasi redesign UI dashboard menggunakan Figma",
+        "Menulis dokumentasi teknis untuk 3 modul baru yang dikembangkan"
+      ],
+      "tech": ["JavaScript", "Firebase", "HTML", "CSS", "Git", "Figma"]
+    },
+    {
+      "jobTitle": "Freelance Web Developer",
+      "company": "Klien Mandiri",
+      "companyUrl": "",
+      "logoUrl": "",
+      "type": "freelance",
+      "startDate": "2023-01-01",
+      "endDate": "",
+      "current": true,
+      "location": "Remote",
+      "locationType": "remote",
+      "description": "Menerima dan mengerjakan proyek web development untuk UMKM dan individu, mulai dari landing page, company profile, hingga sistem informasi sederhana berbasis Firebase.",
+      "achievements": [
+        "Menyelesaikan 5+ proyek website untuk klien UMKM lokal dengan tingkat kepuasan tinggi",
+        "Rata-rata rating kepuasan klien 4.8/5 berdasarkan testimoni",
+        "Spesialisasi pada website bisnis dengan integrasi Firebase dan sistem manajemen konten"
+      ],
+      "tech": ["HTML", "CSS", "JavaScript", "Firebase", "Figma"]
+    }
+  ]
+}

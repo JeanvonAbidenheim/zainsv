@@ -1,0 +1,132 @@
+/* ============================================
+   RESPONSIVE STYLESHEET
+   ============================================ */
+
+/* ---- Tablet (max 1024px) ---- */
+@media (max-width: 1024px) {
+  .about-grid { grid-template-columns: 1fr 1.2fr; gap: 40px; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .contact-cards { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ---- Hero/Nav breakpoint (max 968px) ---- */
+@media (max-width: 968px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 32px;
+  }
+  .hero-text { max-width: 100%; margin: 0 auto; }
+  .hero-actions, .hero-social { justify-content: center; }
+  .hero-visual { order: -1; }
+
+  .stat-strip-grid { grid-template-columns: repeat(2, 1fr); gap: 20px 16px; }
+  .stat-strip-item { border-right: 1px solid rgba(255,255,255,0.1); }
+  .stat-strip-item:nth-child(even) { border-right: none; }
+}
+
+/* ---- Tablet Portrait / Mobile Nav (max 768px) ---- */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 0; right: 0;
+    width: min(320px, 85vw);
+    height: 100vh;
+    background: #fff;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 88px 20px 40px;
+    gap: 4px;
+    border-left: 1px solid var(--border);
+    z-index: 999;
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+  }
+  .nav-links.open { display: flex; transform: translateX(0); }
+
+  .nav-link { font-size: 0.95rem; padding: 12px 14px; border-radius: var(--radius-sm); }
+  .nav-link-cta { margin-left: 0; justify-content: center; }
+  .nav-toggle { display: flex; z-index: 1001; position: relative; }
+
+  /* Mega menu becomes accordion on mobile */
+  .nav-item.has-mega .mega-menu {
+    position: static;
+    transform: none;
+    opacity: 1;
+    pointer-events: auto;
+    width: 100%;
+    display: none;
+    grid-template-columns: 1fr;
+    box-shadow: none;
+    border: none;
+    background: var(--bg-alt);
+    margin-top: 4px;
+    margin-bottom: 8px;
+    padding: 14px;
+  }
+  .nav-item.has-mega.mobile-open .mega-menu { display: grid; }
+  .mega-col-feature { display: none; }
+
+  .hero { padding: 110px 24px 0; }
+  .hero-avatar-wrap { width: 220px; }
+
+  .hero-actions { flex-direction: column; align-items: center; }
+  .hero-actions .btn { width: 220px; justify-content: center; }
+
+  .about-grid { grid-template-columns: 1fr; gap: 28px; }
+  .about-image { order: -1; }
+  .about-img-wrap img { aspect-ratio: 16/9; }
+  .about-info-grid { grid-template-columns: 1fr 1fr; }
+
+  .skills-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+  .projects-grid { grid-template-columns: 1fr; }
+  .certs-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+
+  .timeline { padding-left: 26px; }
+  .timeline-dot { left: -31px; }
+  .timeline-skeleton { margin-left: 26px; }
+
+  .work-card { grid-template-columns: 1fr; gap: 14px; }
+  .work-logo-wrap { width: 44px; height: 44px; }
+  .work-duration { text-align: left; }
+
+  .contact-cards { grid-template-columns: 1fr 1fr; }
+}
+
+/* ---- Mobile (max 480px) ---- */
+@media (max-width: 480px) {
+  .section { padding: 64px 0; }
+  .section-header { margin-bottom: 36px; }
+
+  .hero-name { font-size: 2rem; }
+  .hero-roles { font-size: 1rem; }
+
+  .stat-strip-grid { grid-template-columns: 1fr 1fr; }
+
+  .about-info-grid { grid-template-columns: 1fr; }
+
+  .skills-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .skill-card { padding: 18px 14px; }
+  .skill-logo { width: 38px; height: 38px; }
+
+  .projects-grid { grid-template-columns: 1fr; }
+  .certs-grid { grid-template-columns: 1fr; }
+  .contact-cards { grid-template-columns: 1fr; }
+
+  .cta-box { padding: 24px 18px; }
+
+  .back-to-top { bottom: 18px; right: 18px; }
+}
+
+/* ---- Reduced Motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .skill-card, .project-card, .cert-card, .timeline-item, .work-card {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+  .cursor { animation: none; }
+  html { scroll-behavior: auto; }
+}
