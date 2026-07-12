@@ -9,7 +9,7 @@ import { initTheme, setStatStripValues, initLoader } from "./theme.js";
 
 // ---- Typing Effect ----
 const ROLES = [
-  "Informatics Student",
+  "Student",
   "Web Developer",
   "Creative Technologist",
   "Problem Solver",
