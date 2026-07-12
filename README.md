@@ -1,13 +1,13 @@
-# 🚀 Portfolio Firebase
+# Portfolio Firebase
 
 Website portofolio profesional dengan Firebase Firestore + Admin Panel.
 Dibangun dengan HTML, CSS, JavaScript murni (Vanilla JS) — tanpa framework.
 
-**Live Demo:** Setelah deploy ke Vercel, link akan tersedia di sini.
+**Live Demo:** https://zainsv.vercel.app
 
 ---
 
-## ✨ Fitur
+## Fitur
 
 - **Desain Modern** — Dark mode, gradient, animasi scroll reveal, particle background
 - **Typing Effect** — Teks peran berubah otomatis di hero section
@@ -22,7 +22,7 @@ Dibangun dengan HTML, CSS, JavaScript murni (Vanilla JS) — tanpa framework.
 
 ---
 
-## 📁 Struktur Folder
+## Struktur Folder
 
 ```
 portfolio-firebase/
@@ -47,7 +47,7 @@ portfolio-firebase/
 
 ---
 
-## ⚙️ Setup Firebase
+## Setup Firebase
 
 ### 1. Buat Project Firebase
 
@@ -113,7 +113,7 @@ service cloud.firestore {
 
 ---
 
-## 📊 Isi Data ke Firestore
+## Isi Data ke Firestore
 
 ### Cara 1: Lewat Admin Panel (Direkomendasikan)
 
@@ -140,7 +140,7 @@ Lihat `data/sample-data.json` untuk contoh struktur data lengkap.
 
 ---
 
-## 🌐 Deploy ke Vercel
+##  Deploy ke Vercel
 
 ### Cara 1: Via GitHub (Direkomendasikan)
 
@@ -160,7 +160,7 @@ vercel
 
 ---
 
-## 🛠️ Kustomisasi
+## Kustomisasi
 
 ### Ganti Warna Tema
 
@@ -197,7 +197,7 @@ const ROLES = [
 
 ---
 
-## 📱 Halaman & Sections
+## Halaman & Sections
 
 | Section | Sumber Data |
 |---|---|
@@ -212,7 +212,7 @@ const ROLES = [
 
 ---
 
-## 🔒 Keamanan
+## Keamanan
 
 - Admin panel hanya bisa diakses setelah login via Firebase Authentication
 - Firestore Security Rules memastikan hanya user terautentikasi yang bisa menulis data
@@ -220,7 +220,7 @@ const ROLES = [
 
 ---
 
-## 🧩 Teknologi yang Digunakan
+## Teknologi yang Digunakan
 
 | Teknologi | Kegunaan |
 |---|---|
@@ -235,7 +235,7 @@ const ROLES = [
 
 ---
 
-## 💡 Tips untuk Mahasiswa
+## Tips untuk Mahasiswa
 
 1. **Ganti semua placeholder** — Nama, universitas, email, dan semua data contoh
 2. **Isi data lewat Admin Panel** — Lebih mudah daripada langsung di Firebase Console
@@ -245,11 +245,11 @@ const ROLES = [
 
 ---
 
-## 📄 Lisensi
+## Lisensi
 
 Free to use untuk keperluan personal dan pendidikan.
-Jangan lupa kasih kredit jika membagikan 🙏
+Jangan lupa kasih kredit jika membagikan yaa
 
 ---
 
-Dibuat dengan ♥ untuk mahasiswa web developer Indonesia.
+Dibuat dengan tulus untuk mahasiswa web developer Indonesia.
